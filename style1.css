@@ -1,0 +1,122 @@
+/* Center the body and its children */
+body, html {
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center vertically */
+    align-items: center; /* Center horizontally */
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black overlay */
+    background-image: url('https://i.postimg.cc/gcwgJfSH/dog-cat.webp'); /* Replace with your image URL */
+    background-size: cover; /* Cover the entire page */
+    background-repeat: no-repeat;
+    background-position: center;
+}
+
+.heading {
+    font-size: 2em;
+    font-weight: bold;
+    margin-bottom: 20px; /* Space below the heading */
+    color: #0e0101;/* White text for better contrast */
+}
+
+/* Center the container and its children */
+.container {
+    display: flex;
+    justify-content: center; /* Center the cards horizontally */
+    align-items: center; /* Center the cards vertically within the container */
+    flex-wrap: nowrap; /* Prevent wrapping of the cards */
+}
+
+.maincontainer {
+    width: 302px; /* Keep the original card size */
+    height: 350px; /* Increased height to accommodate button */
+    margin: 10px;
+    position: relative; /* Use relative positioning */
+    box-sizing: border-box;
+    overflow: hidden; /* Hide overflowing content */
+    border-radius: 10px; /* Rounded corners for the card */
+    /*background: rgba(255, 255, 255, 0.9); /* Semi-transparent white background for cards */
+}
+
+img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image covers the entire area without distortion */
+    border-radius: 10px;
+}
+
+.back h2 {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    color: #f5f1f1;
+}
+
+.back p {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    font-size: 15px;
+    right: 10px;
+    color: #faf8f8;
+}
+
+.back .read-more {
+    position: absolute;
+    bottom: 10px; /* Space from the bottom */
+    left: 50%;
+    transform: translateX(-50%); /* Center the button */
+    background-color: #ff5722; /* Button background color */
+    color: #fff; /* Button text color */
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.back .read-more:hover {
+    background-color: #e64a19; /* Darker shade on hover */
+}
+
+.front h2 {
+    position: absolute;
+    padding: 10px;
+    top: 200px;
+    color: #030300;
+}
+
+/* Style the maincontainer class with all child divs of class .front */
+.maincontainer > .front {
+    position: absolute;
+    transform: perspective(600px) rotateY(0deg);
+    width: 100%; /* Use 100% width to fit the container */
+    height: 100%; /* Ensure the front covers the entire card */
+    backface-visibility: hidden; /* Can't see the backside elements as they're turning around */
+    transition: transform .5s linear 0s;
+}
+
+/* Style the maincontainer class with all child divs of class .back */
+.maincontainer > .back {
+    position: absolute;
+    transform: perspective(600px) rotateY(180deg);
+    background: #262626;
+    color: #fff;
+    width: 100%; /* Use 100% width to fit the container */
+    height: 100%; /* Ensure the back covers the entire card */
+    border-radius: 10px;
+    padding: 5px;
+    box-sizing: border-box;
+    backface-visibility: hidden; /* Can't see the backside elements as they're turning around */
+    transition: transform .5s linear 0s;
+}
+
+.maincontainer:hover > .front {
+    transform: perspective(600px) rotateY(-180deg);
+}
+
+.maincontainer:hover > .back {
+    transform: perspective(600px) rotateY(0deg);
+}
